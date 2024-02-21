@@ -23,6 +23,7 @@ const RecipeDetails: React.FC<{ id: number }> = ({ id }) => {
   if (!recipe) return null;
 
   return (
+    <>
     <div className="recipeDetails-details-container">
       <div className="recipeDetails-card">
         <div className="recipeDetails-image">
@@ -76,6 +77,7 @@ const RecipeDetails: React.FC<{ id: number }> = ({ id }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -7,9 +7,16 @@ function App() {
   const [selectedRecipeId, setSelectedRecipeId] = useState<number | null>(
     null
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleRecipeSelect = (recipeId: number) => {
     setSelectedRecipeId(recipeId);
+    setIsModalOpen(true); // Abrir o modal ao selecionar uma receita
+  };
+
+  const closeModal = () => {
+    setSelectedRecipeId(null);
+    setIsModalOpen(false);
   };
 
   return (
@@ -23,16 +30,22 @@ function App() {
       </header>
       <div className="container">
         <section>
-          <h2>Lista de Receitas</h2>
           <RecipeList onRecipeSelect={handleRecipeSelect} />
         </section>
-        <section>
-          <h2>Itens da Receita</h2>
-          {selectedRecipeId && <RecipeDetails id={selectedRecipeId} />}
-        </section>
+        {isModalOpen && (
+          <div className="modal-container">
+            <div className="modal">
+              <RecipeDetails id={selectedRecipeId!} />
+              <button onClick={closeModal} className="modal-close-button">
+                X
+            </button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
 }
 
 export default App;
+

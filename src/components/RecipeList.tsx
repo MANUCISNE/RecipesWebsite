@@ -46,6 +46,7 @@ const RecipeList: React.FC<RecipeListProps> = ({ onRecipeSelect }) => {
   return (
     <>
       <div className="RecipeSearch">
+        <h2>Lista de Receitas</h2>
         <form className="RecipeSearch-search-form" onSubmit={handleSearch}>
           <input
             className="RecipeSearch-search-input"
